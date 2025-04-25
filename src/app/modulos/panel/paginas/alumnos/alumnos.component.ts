@@ -72,4 +72,10 @@ export class AlumnosComponent {
     console.log(`Editar alumno: ${alumno.id}`);
     this.formulario.patchValue(alumno); 
   }
+
+  cambiarEstado(alumno: Alumno) {
+    console.log(`Cambiar estado de alumno: ${alumno.id}`);
+    this.listaAlumnos = this.listaAlumnos.map((elemento) => 
+      elemento.id === alumno.id ? { ...elemento, aprobado: !elemento.aprobado } : elemento ); 
+  }
 }

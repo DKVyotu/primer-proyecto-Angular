@@ -20,4 +20,7 @@ export class TablaAlumnosComponent {
 
   @Output()
   editarAlumno = new EventEmitter<Alumno>();
+
+  @Output()
+  cambiarEstado = new EventEmitter<Alumno>();
 }
