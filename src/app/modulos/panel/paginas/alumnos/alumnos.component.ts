@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Alumno } from './modelos';
 
 @Component({
@@ -8,6 +9,8 @@ import { Alumno } from './modelos';
   styleUrl: './alumnos.component.css'
 })
 export class AlumnosComponent {
+
+  editandoID: number | null = null;
 
   listaAlumnos: Alumno[] = [
     { id: 1, nombre: 'Juan', apellido: 'Perez', aprobado: true },
@@ -22,6 +25,39 @@ export class AlumnosComponent {
     { id: 10, nombre: 'Valeria', apellido: 'Cruz', aprobado: true },
   ];
 
+  formulario: FormGroup;
+
+  constructor(private FormBuilder: FormBuilder) {
+    this.formulario = this.FormBuilder.group({
+      nombre: ['',Validators.required],
+      apellido: ['',Validators.required]
+    });
+  }
+
+  agregarAlumno() {
+
+    if (this.editandoID && !this.formulario.invalid ) {
+      /* Editando */
+      console.log('Editando nuevo alumno ');
+    } 
+    if (!this.formulario.invalid) {
+      /* Creando */
+      console.log('Agregan nuevo alumno');
+      const nuevoAlumno =  this.formulario.value;
+      nuevoAlumno.aprobado = false;
+      nuevoAlumno.id = Date.now();
+      this.listaAlumnos = [...this.listaAlumnos, nuevoAlumno];
+      this.formulario.reset();
+      console.log(this.listaAlumnos);
+    }
+    else {
+      console.log('Formulario inválido');
+    }
+
+
+  }
+
+
   eliminarAlumno(id: number) {
     console.log(`Eliminar alumno con ID: ${id}`);
     /* this.alumnos = this.ListaAlumnos.filter(alumno => alumno.id !== id); */
@@ -29,4 +65,7 @@ export class AlumnosComponent {
   editarAlumno(alumno: Alumno) {
     console.log(`Editar alumno: ${alumno.id}`);
   }
+
+
+
 }
