@@ -36,36 +36,40 @@ export class AlumnosComponent {
 
   agregarAlumno() {
 
-    if (this.editandoID && !this.formulario.invalid ) {
+    /* Validando el formulario */
+    if (!this.formulario.invalid) { 
       /* Editando */
-      console.log('Editando nuevo alumno ');
-    } 
-    if (!this.formulario.invalid) {
+      if (this.editandoID ) {
+        console.log('Editando alumno ');    
+        this.listaAlumnos = this.listaAlumnos.map((elemento) => 
+          elemento.id === this.editandoID ? { ...elemento, ...this.formulario.value } : elemento ); 
+        this.formulario.reset();
+        this.editandoID = null;        
+      } 
       /* Creando */
-      console.log('Agregan nuevo alumno');
-      const nuevoAlumno =  this.formulario.value;
-      nuevoAlumno.aprobado = false;
-      nuevoAlumno.id = Date.now();
-      this.listaAlumnos = [...this.listaAlumnos, nuevoAlumno];
-      this.formulario.reset();
-      console.log(this.listaAlumnos);
+      else {        
+        console.log('Agregando nuevo alumno');
+        console.log(this.editandoID);
+        const nuevoAlumno =  this.formulario.value;
+        nuevoAlumno.aprobado = false;
+        nuevoAlumno.id = Date.now();
+        this.listaAlumnos = [...this.listaAlumnos, nuevoAlumno];
+        this.formulario.reset();
+        console.log(this.listaAlumnos);
+      }
     }
     else {
-      console.log('Formulario inválido');
+      alert('Formulario inválido. Por favor, completa todos los campos requeridos.');
     }
-
-
   }
-
 
   eliminarAlumno(id: number) {
     console.log(`Eliminar alumno con ID: ${id}`);
-    /* this.alumnos = this.ListaAlumnos.filter(alumno => alumno.id !== id); */
+    this.listaAlumnos = this.listaAlumnos.filter((alumno) => alumno.id !== id);
   }
   editarAlumno(alumno: Alumno) {
+    this.editandoID = alumno.id;
     console.log(`Editar alumno: ${alumno.id}`);
+    this.formulario.patchValue(alumno); 
   }
-
-
-
 }
