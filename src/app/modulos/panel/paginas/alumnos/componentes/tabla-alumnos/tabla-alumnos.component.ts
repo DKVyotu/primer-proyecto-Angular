@@ -1,24 +1,18 @@
 import { Component } from '@angular/core';
+import { Alumno } from '../../modelos';
 
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+const ListaAlumnos: Alumno[] = [
+  { id: 1, nombre: 'Juan', apellido: 'Perez', aprobado: true },
+  { id: 2, nombre: 'Maria', apellido: 'Lopez', aprobado: false },
+  { id: 3, nombre: 'Carlos', apellido: 'Sanchez', aprobado: true },
+  { id: 4, nombre: 'Ana', apellido: 'Gomez', aprobado: true },
+  { id: 5, nombre: 'Luis', apellido: 'Fernandez', aprobado: false },
+  { id: 6, nombre: 'Sofia', apellido: 'Martinez', aprobado: true },
+  { id: 7, nombre: 'Diego', apellido: 'Torres', aprobado: false },
+  { id: 8, nombre: 'Lucia', apellido: 'Ramirez', aprobado: true },
+  { id: 9, nombre: 'Jorge', apellido: 'Herrera', aprobado: false },
+  { id: 10, nombre: 'Valeria', apellido: 'Cruz', aprobado: true },
 ];
 
 
@@ -29,8 +23,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrl: './tabla-alumnos.component.css'
 })
 export class TablaAlumnosComponent {
-  
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+
+  displayedColumns: string[] = ['id', 'nombre', 'apellido', 'aprobado', 'acciones'];
+  dataSource = ListaAlumnos;
 
 }
