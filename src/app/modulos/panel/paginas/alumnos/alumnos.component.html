@@ -1,7 +1,24 @@
 <h1>Lista de Alumnos</h1>
 
+<form action="" class="">
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput placeholder="Ingresa el nombre" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Apellido</mat-label>
+    <input matInput placeholder="Ingresa el Apellido" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">
+    <mat-icon>add</mat-icon>
+    Agregar Alumno
+  </button>
+</form>
+
 <app-tabla-alumnos
-(eliminarAlumno)="eliminarAlumno($event)"
-(editarAlumno)="editarAlumno($event)"
-[lista]="listaAlumnos"
+  (eliminarAlumno)="eliminarAlumno($event)"
+  (editarAlumno)="editarAlumno($event)"
+  [lista]="listaAlumnos"
 />

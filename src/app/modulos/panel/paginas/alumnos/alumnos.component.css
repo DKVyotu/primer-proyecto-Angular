@@ -1,0 +1,9 @@
+form {
+    display: flex;
+    flex-direction: row; 
+    gap: 1rem;
+
+    button {
+        height: 56px;
+    }
+}

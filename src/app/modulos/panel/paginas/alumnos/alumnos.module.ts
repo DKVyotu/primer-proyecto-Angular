@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [AlumnosComponent, TablaAlumnosComponent],
@@ -19,6 +21,8 @@ import { MatIcon } from '@angular/material/icon';
     MatIconModule,
     MatButtonModule,
     MatIcon,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   exports: [AlumnosComponent],
 })
