@@ -1,59 +1,133 @@
-# EntregableN1
+# Proyecto de Gestión de Alumnos
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+Este proyecto es una aplicación desarrollada en Angular que permite gestionar una lista de alumnos. Incluye funcionalidades como agregar, editar, eliminar y cambiar el estado de los alumnos (aprobado/desaprobado). Además, utiliza Angular Material para el diseño de la interfaz de usuario.
 
-## Development server
+---
 
-To start a local development server, run:
+## **Características**
 
-```bash
-ng serve
+- **Agregar Alumnos**: Permite añadir nuevos alumnos a la lista.
+- **Editar Alumnos**: Modifica los datos de un alumno existente.
+- **Eliminar Alumnos**: Elimina un alumno de la lista.
+- **Cambiar Estado**: Cambia el estado de un alumno entre "Aprobado" y "Desaprobado".
+- **Interfaz moderna**: Utiliza Angular Material para un diseño limpio y profesional.
+
+---
+
+## **Tecnologías utilizadas**
+
+- **Angular**: Framework principal para el desarrollo de la aplicación.
+- **Angular Material**: Biblioteca de componentes para la interfaz de usuario.
+- **TypeScript**: Lenguaje principal para la lógica de la aplicación.
+- **SCSS/CSS**: Estilos personalizados para complementar Angular Material.
+
+---
+
+## **Estructura del proyecto**
+
+```plaintext
+src/
+├── app/
+│   ├── modulos/
+│   │   ├── panel/
+│   │   │   ├── componentes/
+│   │   │   │   ├── nav-menu/
+│   │   │   │   ├── tabla-alumnos/
+│   │   │   ├── paginas/
+│   │   │   │   ├── alumnos/
+│   │   │   │   │   ├── componentes/
+│   │   │   │   │   │   ├── tabla-alumnos/
+│   │   │   │   │   ├── alumnos.component.ts
+│   │   │   │   │   ├── alumnos.module.ts
+│   │   │   │   │   ├── alumnos-routing.module.ts
+│   │   │   ├── panel.component.ts
+│   │   │   ├── panel.module.ts
+│   ├── app.component.ts
+│   ├── app.module.ts
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## **Cómo ejecutar el proyecto**
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. Clona este repositorio en tu máquina local.
+2. Asegúrate de tener instalado Node.js y Angular CLI.
+3. Ejecuta `npm install` para instalar las dependencias.
+4. Usa `ng serve` para iniciar el servidor de desarrollo.
+5. Abre tu navegador y ve a `http://localhost:4200`.
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## **Uso**
 
-```bash
-ng generate --help
-```
+### **Agregar un alumno**
+1. Completa el formulario con el nombre y apellido del alumno.
+2. Haz clic en el botón "Agregar".
+3. El alumno aparecerá en la tabla.
 
-## Building
+### **Editar un alumno**
+1. Haz clic en el ícono de edición (lápiz) en la fila del alumno.
+2. Modifica los datos en el formulario.
+3. Haz clic en "Guardar" para actualizar los datos.
 
-To build the project run:
+### **Eliminar un alumno**
+1. Haz clic en el ícono de eliminar (basura) en la fila del alumno.
+2. El alumno será eliminado de la lista.
 
-```bash
-ng build
-```
+### **Cambiar estado**
+1. Haz clic en el ícono de estado (check o close) en la fila del alumno.
+2. El estado cambiará entre "Aprobado" y "Desaprobado".
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## **Componentes principales**
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+1. **Tabla de Alumnos (TablaAlumnosComponent)**  
+    - Muestra la lista de alumnos en una tabla.  
+    - Incluye acciones para editar, eliminar y cambiar el estado de los alumnos.
 
-```bash
-ng test
-```
+2. **Gestión de Alumnos (AlumnosComponent)**  
+    - Contiene el formulario para agregar y editar alumnos.  
+    - Maneja la lógica de la lista de alumnos.
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## **Estilos**
 
-```bash
-ng e2e
-```
+### **Clases personalizadas**
+- `icono-verde`: Aplica un color verde para los íconos de estado "Aprobado".
+- `icono-rojo`: Aplica un color rojo para los íconos de estado "Desaprobado".
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## **Dependencias importantes**
+- **Angular CLI**: ^15.0.0  
+- **Angular Material**: ^15.0.0  
+- **RxJS**: ^7.5.0  
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+## **Contribuciones**
+
+Si deseas contribuir al proyecto:
+
+1. Haz un fork del repositorio.
+2. Crea una rama para tu funcionalidad o corrección:
+    ```bash
+    git checkout -b nombre-de-tu-rama
+    ```
+3. Realiza tus cambios y haz un commit:
+    ```bash
+    git commit -m "Descripción de los cambios"
+    ```
+4. Envía un pull request.
+
+
+---
+
+## **Contacto**
+
+Si tienes preguntas o sugerencias, no dudes en contactarme:
+
+- **Email**: DKVantonio@gmail.com
+- **GitHub**: [DKVyotu](https://github.com/DKVyotu)
