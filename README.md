@@ -114,7 +114,7 @@ Si deseas contribuir al proyecto:
 1. Haz un fork del repositorio.
 2. Crea una rama para tu funcionalidad o corrección:
     ```bash
-    git checkout -b nombre-de-tu-rama
+    git checkout -b main
     ```
 3. Realiza tus cambios y haz un commit:
     ```bash
