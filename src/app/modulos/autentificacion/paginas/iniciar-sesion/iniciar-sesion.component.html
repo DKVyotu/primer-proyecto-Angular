@@ -1,0 +1,15 @@
+<form>
+  <h1 >Iniciar Sesion</h1>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Email" type="email" required />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput placeholder="Password" type="password" required />
+  </mat-form-field>
+  <div class="button-container">
+    <button mat-raised-button (click)="iniciarSession()" type="button">Iniciar Sesion</button>
+    <button mat-raised-button routerLink="/autentificacion/registro">Registrarse</button>
+  </div>
+</form>

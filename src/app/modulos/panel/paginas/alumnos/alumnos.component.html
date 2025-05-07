@@ -1,25 +1,41 @@
 <h1>Lista de Alumnos</h1>
 
-<form [formGroup]="formulario" (ngSubmit)="agregarAlumno()">
-  <mat-form-field>
-    <mat-label>Nombre</mat-label>
-    <input matInput placeholder="Ingresa el nombre" formControlName="nombre"/>
-  </mat-form-field>
+<ng-container *ngIf="cargando; else cargado">
+  <p>Cargando porfavor espera</p>
+</ng-container>
+ 
 
-  <mat-form-field>
-    <mat-label>Apellido</mat-label>
-    <input matInput placeholder="Ingresa el Apellido"  formControlName="apellido"/>
-  </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit">
-    <mat-icon>add</mat-icon>
-    Agregar
-  </button>
-</form>
+<ng-template #cargado>
+  <form [formGroup]="formulario" (ngSubmit)="agregarAlumno()">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input
+        matInput
+        placeholder="Ingresa el nombre"
+        formControlName="nombre"
+      />
+    </mat-form-field>
 
-<app-tabla-alumnos
-  (eliminarAlumno)="eliminarAlumno($event)"
-  (editarAlumno)="editarAlumno($event)"
-  (cambiarEstado)="cambiarEstado($event)"
-  [lista]="listaAlumnos"
-/>
+    <mat-form-field>
+      <mat-label>Apellido</mat-label>
+      <input
+        matInput
+        placeholder="Ingresa el Apellido"
+        formControlName="apellido"
+      />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">
+      <mat-icon>add</mat-icon>
+      Agregar
+    </button>
+  </form>
+
+  <app-tabla-alumnos
+    (eliminarAlumno)="eliminarAlumno($event)"
+    (editarAlumno)="editarAlumno($event)"
+    (cambiarEstado)="cambiarEstado($event)"
+    [lista]="listaAlumnos"
+  />
+</ng-template>

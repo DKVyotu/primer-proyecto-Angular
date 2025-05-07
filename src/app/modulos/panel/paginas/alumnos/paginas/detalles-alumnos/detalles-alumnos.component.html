@@ -1,0 +1,32 @@
+@if (!(alumnos$ | async)) {
+<h1>Alumno no encontrado</h1>
+} @else {
+<div class="detalles-alumno">
+  <h1 class="titulo">Detalles del Alumno</h1>
+  <div class="contenido">
+    <img
+      src="https://picsum.photos/150"
+      alt="Imagen del Alumno"
+      class="imagen-alumno"
+    />
+    <div class="informacion">
+      <div class="detalle">
+        <span class="label">Nombre:</span>
+        <span class="valor">{{ (alumnos$ | async)?.nombre }}</span>
+      </div>
+      <div class="detalle">
+        <span class="label">Apellido:</span>
+        <span class="valor">{{ (alumnos$ | async)?.apellido }}</span>
+      </div>
+      <div class="detalle">
+        <span class="label">Estado:</span>
+        <span 
+          class="valor" 
+          [ngStyle]="{ color: (alumnos$ | async)?.aprobado ? 'green' : 'red' }">
+          {{ (alumnos$ | async)?.aprobado ? "Aprobado" : "Desaprobado" }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+}

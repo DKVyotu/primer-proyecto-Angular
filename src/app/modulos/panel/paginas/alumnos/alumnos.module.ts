@@ -9,12 +9,14 @@ import { TablaAlumnosComponent } from './componentes/tabla-alumnos/tabla-alumnos
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
+import { MatIcon } from '@angular/material/icon'; 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AlumnosService } from './alumnos.service';
+import { DetallesAlumnosComponent } from './paginas/detalles-alumnos/detalles-alumnos.component';
 
 @NgModule({
-  declarations: [AlumnosComponent, TablaAlumnosComponent],
+  declarations: [AlumnosComponent, TablaAlumnosComponent, DetallesAlumnosComponent],
   imports: [
     CommonModule,
     AlumnosRoutingModule,

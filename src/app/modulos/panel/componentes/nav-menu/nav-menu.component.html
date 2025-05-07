@@ -1,7 +1,11 @@
 <mat-nav-list aria-label="Select a folder">
-  <a mat-list-item href="...">Inicio</a>
-  <a mat-list-item href="...">Usuarios</a>
-  <a mat-list-item href="...">Cursos</a>
-  <a mat-list-item href="...">Inscripciones</a>
-  <a mat-list-item href="...">Salir</a>
+  <a mat-list-item routerLink="/">Inicio</a>
+  <!-- Navegacion relativa por que ya estamos en URL/panel/ -->
+  <a mat-list-item routerLink="ordenes">Ordenes</a>
+  <a mat-list-item routerLink="alumnos">Alumnos</a>
+  <a mat-list-item routerLink="/autentificacion">Autentificacion</a>
+  <a mat-list-item routerLink="/autentificacion/inicio-sesion">Iniciar Sesion</a>
+  <a mat-list-item routerLink="/autentificacion/registro">Registrarse</a>
+  <a mat-list-item (click)="cerrarSesion()">Cerrar Sesion</a>
 </mat-nav-list>
+ 

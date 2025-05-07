@@ -13,9 +13,10 @@ import { NavMenuComponent } from './componentes/nav-menu/nav-menu.component';
 
 import { MatListModule } from '@angular/material/list';
 import { AlumnosModule } from './paginas/alumnos/alumnos.module';
+import { OrdenesComponent } from './paginas/ordenes/ordenes.component';
 
 @NgModule({
-  declarations: [PanelComponent, NavMenuComponent],
+  declarations: [PanelComponent, NavMenuComponent, OrdenesComponent],
   imports: [
     CommonModule,
     PanelRoutingModule,

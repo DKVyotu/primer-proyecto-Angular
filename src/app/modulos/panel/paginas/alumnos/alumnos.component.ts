@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Alumno } from './modelos';
+import { AlumnosService } from './alumnos.service';
+import { Subscription, take } from 'rxjs';
 
 @Component({
   selector: 'app-alumnos',
@@ -8,31 +10,62 @@ import { Alumno } from './modelos';
   templateUrl: './alumnos.component.html',
   styleUrl: './alumnos.component.css'
 })
-export class AlumnosComponent {
+export class AlumnosComponent implements OnDestroy {
+
+  ngOnDestroy(): void {
+    console.log('Destruyendo el componente...');  
+    this.alumnosSubscription?.unsubscribe(); 
+  }
 
   editandoID: number | null = null;
-
-  listaAlumnos: Alumno[] = [
-    { id: 1, nombre: 'Juan', apellido: 'Perez', aprobado: true },
-    { id: 2, nombre: 'Maria', apellido: 'Lopez', aprobado: false },
-    { id: 3, nombre: 'Carlos', apellido: 'Sanchez', aprobado: true },
-    { id: 4, nombre: 'Ana', apellido: 'Gomez', aprobado: true },
-    { id: 5, nombre: 'Luis', apellido: 'Fernandez', aprobado: false },
-    { id: 6, nombre: 'Sofia', apellido: 'Martinez', aprobado: true },
-    { id: 7, nombre: 'Diego', apellido: 'Torres', aprobado: false },
-    { id: 8, nombre: 'Lucia', apellido: 'Ramirez', aprobado: true },
-    { id: 9, nombre: 'Jorge', apellido: 'Herrera', aprobado: false },
-    { id: 10, nombre: 'Valeria', apellido: 'Cruz', aprobado: true },
-  ];
+  cargando = false;
+  alumnosSubscription: Subscription | null = null; // Subscription to manage the observable
 
   formulario: FormGroup;
 
-  constructor(private FormBuilder: FormBuilder) {
+  listaAlumnos: Alumno[] = [ ];
+
+  constructor(private FormBuilder: FormBuilder, private alumnosService: AlumnosService) {
+
+    this.cargaObservador();
+    /* this.cargaAlumnos(); */
+
     this.formulario = this.FormBuilder.group({
       nombre: ['',Validators.required],
       apellido: ['',Validators.required]
     });
   }
+  
+  cargaObservador() {
+    this.cargando = true;
+    this.alumnosSubscription = this.alumnosService
+    .getAlumnos$()
+      .pipe(take(5)) 
+      .subscribe({
+        next: (data) => {
+          console.log(data)
+          this.listaAlumnos = data;
+        },
+        error: (error) => {
+          console.log(error)
+        },
+        complete: () => {
+          console.log('Carga de alumnos completada')
+          this.cargando = false;
+        }
+
+      })
+
+  }
+
+  cargaAlumnos() {
+    this.cargando = true;
+    this.alumnosService.getAlumnos()
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error))
+    .finally(() => {this.cargando = false})
+  }
+
 
   agregarAlumno() {
 
