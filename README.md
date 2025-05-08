@@ -29,21 +29,44 @@ Este proyecto es una aplicación desarrollada en Angular que permite gestionar u
 src/
 ├── app/
 │   ├── modulos/
+│   │   ├── autentificacion/
+│   │   │   ├── paginas/
+│   │   │   │   ├── iniciar-sesion/
+│   │   │   │   │   ├── iniciar-sesion.component.ts
+│   │   │   │   │   ├── iniciar-sesion.module.ts
+│   │   │   │   │   ├── iniciar-sesion-routing.module.ts
+│   │   │   │   ├── registro/
+│   │   │   │   │   ├── registro.component.ts
+│   │   │   │   │   ├── registro.module.ts
+│   │   │   │   │   ├── registro-routing.module.ts
+│   │   │   ├── autentificacion.component.ts
+│   │   │   ├── autentificacion.module.ts
+│   │   │   ├── autentificacion-routing.module.ts
 │   │   ├── panel/
 │   │   │   ├── componentes/
 │   │   │   │   ├── nav-menu/
+│   │   │   │   │   ├── nav-menu.component.ts
 │   │   │   │   ├── tabla-alumnos/
+│   │   │   │   │   ├── tabla-alumnos.component.ts
 │   │   │   ├── paginas/
 │   │   │   │   ├── alumnos/
-│   │   │   │   │   ├── componentes/
-│   │   │   │   │   │   ├── tabla-alumnos/
+│   │   │   │   │   ├── paginas/
+│   │   │   │   │   │   ├── detalles-alumnos/
+│   │   │   │   │   │   │   ├── detalles-alumnos.component.ts
+│   │   │   │   │   │   │   ├── detalles-alumnos.component.html
+│   │   │   │   │   │   │   ├── detalles-alumnos.component.css
 │   │   │   │   │   ├── alumnos.component.ts
 │   │   │   │   │   ├── alumnos.module.ts
 │   │   │   │   │   ├── alumnos-routing.module.ts
 │   │   │   ├── panel.component.ts
 │   │   │   ├── panel.module.ts
+│   │   │   ├── panel-routing.module.ts
 │   ├── app.component.ts
 │   ├── app.module.ts
+├── assets/
+├── environments/
+│   ├── environment.ts
+│   ├── environment.prod.ts
 ```
 
 ---
@@ -61,20 +84,24 @@ src/
 ## **Uso**
 
 ### **Agregar un alumno**
+
 1. Completa el formulario con el nombre y apellido del alumno.
 2. Haz clic en el botón "Agregar".
 3. El alumno aparecerá en la tabla.
 
 ### **Editar un alumno**
+
 1. Haz clic en el ícono de edición (lápiz) en la fila del alumno.
 2. Modifica los datos en el formulario.
 3. Haz clic en "Guardar" para actualizar los datos.
 
 ### **Eliminar un alumno**
+
 1. Haz clic en el ícono de eliminar (basura) en la fila del alumno.
 2. El alumno será eliminado de la lista.
 
 ### **Cambiar estado**
+
 1. Haz clic en el ícono de estado (check o close) en la fila del alumno.
 2. El estado cambiará entre "Aprobado" y "Desaprobado".
 
@@ -82,28 +109,23 @@ src/
 
 ## **Componentes principales**
 
-1. **Tabla de Alumnos (TablaAlumnosComponent)**  
-    - Muestra la lista de alumnos en una tabla.  
-    - Incluye acciones para editar, eliminar y cambiar el estado de los alumnos.
+1. **Tabla de Alumnos (TablaAlumnosComponent)**
 
-2. **Gestión de Alumnos (AlumnosComponent)**  
-    - Contiene el formulario para agregar y editar alumnos.  
-    - Maneja la lógica de la lista de alumnos.
+   - Muestra la lista de alumnos en una tabla.
+   - Incluye acciones para editar, eliminar y cambiar el estado de los alumnos.
 
----
+2. **Gestión de Alumnos (AlumnosComponent)**
+   - Contiene el formulario para agregar y editar alumnos.
+   - Maneja la lógica de la lista de alumnos.
 
-## **Estilos**
-
-### **Clases personalizadas**
-- `icono-verde`: Aplica un color verde para los íconos de estado "Aprobado".
-- `icono-rojo`: Aplica un color rojo para los íconos de estado "Desaprobado".
 
 ---
 
 ## **Dependencias importantes**
-- **Angular CLI**: ^15.0.0  
-- **Angular Material**: ^15.0.0  
-- **RxJS**: ^7.5.0  
+
+- **Angular CLI**: ^15.2.0
+- **Angular Material**: ^15.2.0
+- **RxJS**: ^7.8.0
 
 ---
 
@@ -113,15 +135,14 @@ Si deseas contribuir al proyecto:
 
 1. Haz un fork del repositorio.
 2. Crea una rama para tu funcionalidad o corrección:
-    ```bash
-    git checkout -b main
-    ```
+   ```bash
+   git checkout -b main
+   ```
 3. Realiza tus cambios y haz un commit:
-    ```bash
-    git commit -m "Descripción de los cambios"
-    ```
+   ```bash
+   git commit -m "Descripción de los cambios"
+   ```
 4. Envía un pull request.
-
 
 ---
 
