@@ -3,11 +3,13 @@
 <ng-container *ngIf="cargando; else cargado">
   <p>Cargando porfavor espera</p>
 </ng-container>
- 
-
 
 <ng-template #cargado>
-  <form [formGroup]="formulario" (ngSubmit)="agregarAlumno()">
+  <form
+    *ngIf="(authuser | async)?.rol === 'admin'"
+    [formGroup]="formulario"
+    (ngSubmit)="agregarAlumno()"
+  >
     <mat-form-field>
       <mat-label>Nombre</mat-label>
       <input

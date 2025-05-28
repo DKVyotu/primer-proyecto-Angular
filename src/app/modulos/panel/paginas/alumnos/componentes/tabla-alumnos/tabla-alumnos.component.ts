@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Alumno } from '../../modelos';
+import { Observable } from 'rxjs';
+import { USER } from '../../../../../../core/models';
+import { AuthService } from '../../../../../../core/services/auth.service';
 
 
 @Component({
@@ -23,4 +26,10 @@ export class TablaAlumnosComponent {
 
   @Output()
   cambiarEstado = new EventEmitter<Alumno>();
+
+  authuser: Observable <USER | null>
+
+  constructor(private AuthService: AuthService) { 
+    this.authuser = this.AuthService.authuser;
+  }
 }

@@ -4,3 +4,11 @@ export interface Alumno {
     apellido: string;
     aprobado: boolean;
   }
+
+
+
+export interface CrearAlumno {
+    id: string;
+    nombre: string;
+    apellido: string; 
+  }

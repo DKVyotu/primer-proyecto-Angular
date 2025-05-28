@@ -35,7 +35,11 @@
       <button mat-icon-button (click)="editarAlumno.emit(element)">
         <mat-icon style="color: rgb(164, 164, 0)">edit</mat-icon>
       </button>
-      <button mat-icon-button (click)="eliminarAlumno.emit(element.id)">
+      <button
+        [disabled]="(authuser | async)?.rol != 'admin'"
+        mat-icon-button
+        (click)="eliminarAlumno.emit(element.id)"
+      >
         <mat-icon style="color: rgb(164, 0, 0)">delete</mat-icon>
       </button>
       <button mat-icon-button (click)="cambiarEstado.emit(element)">
@@ -43,7 +47,7 @@
           element.aprobado ? "check" : "close"
         }}</mat-icon>
       </button>
-      <button mat-icon-button [routerLink]="element.id" >
+      <button mat-icon-button [routerLink]="element.id">
         <mat-icon style="color: rgb(126, 0, 164)">visibility</mat-icon>
       </button>
     </td>

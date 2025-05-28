@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'; 
+import { adminGuard } from '../../core/guards/admin.guard';
 
 
 /*  Aca estamos dentro de URL/panel/---- */
@@ -11,6 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'ordenes',
+    canActivate: [adminGuard],
     loadChildren: () =>
       import('./paginas/ordenes/ordenes.module').then((archivo) => archivo.OrdenesModule),
   }

@@ -1,9 +1,9 @@
-
 import { Injectable } from '@angular/core';
-import { Alumno } from './modelos';
-import { Observable, of, map } from 'rxjs';
+import { Alumno, CrearAlumno } from './modelos';
+import { Observable, of, map, concatMap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
-const FalsaAPI: Alumno [] = [
+/* const FalsaAPI: Alumno [] = [
     { id: 1, nombre: 'Juan', apellido: 'Perez', aprobado: true },
     { id: 2, nombre: 'Maria', apellido: 'Lopez', aprobado: false },
     { id: 3, nombre: 'Carlos', apellido: 'Sanchez', aprobado: true },
@@ -14,42 +14,31 @@ const FalsaAPI: Alumno [] = [
     { id: 8, nombre: 'Lucia', apellido: 'Ramirez', aprobado: true },
     { id: 9, nombre: 'Jorge', apellido: 'Herrera', aprobado: false },
     { id: 10, nombre: 'Valeria', apellido: 'Cruz', aprobado: true },
-];
+]; */
 
-@Injectable( {providedIn: 'root'} )
+@Injectable({ providedIn: 'root' })
 export class AlumnosService {
+  constructor(private http: HttpClient) {}
 
-    getAlumnos(): Promise<Alumno []> {
-        console.log('info desde la API');
-        /* Asicrono */
+  crearAlumno(alumno: CrearAlumno): Observable<Alumno> {
+    return this.http.post<Alumno>('http://localhost:3000/alumnos', alumno);
+  }
 
-        const promesa = new Promise<Alumno[]>((resolve, reject) => {
-            setTimeout(() => {
-                reject('Es falsa API, no existe');
-                /* resolve(FalsaAPI); */
-            }, 2000); 
-        });
 
-        return promesa;
-    }
+  getAlumnos$(): Observable<Alumno[]> {
+    return this.http.get<Alumno[]>('http://localhost:3000/alumnos');
+  }
 
-    getAlumnos$() : Observable <Alumno[]> {
-        const alumnosObservable =  new Observable<Alumno[]>((observer) => {
+  getAlumnoId(id: number): Observable<Alumno | null> { 
+    return this.http.get<Alumno>(`http://localhost:3000/alumnos/${id}`).pipe(
+      map((response) => response || null)
+    );
+  }
 
-            /* NO termina hasta que pongas el observer.complete */
-            setTimeout(() => {
-                observer.next(FalsaAPI)
-                /* observer.error('Es falsa API, no existe'); */
-                observer.complete();
-            }, 1000);
+  deleteAlumno(id: string): Observable<Alumno[]> {
+    return this.http
+    .delete<Alumno>(`http://localhost:3000/alumnos/${id}`)    
+    .pipe(concatMap(()=> this.getAlumnos$()));
+  }
 
-        })
-        return alumnosObservable;
-    }
-
-    getAlumnoId(id: number): Observable<Alumno | null> {
-        return of ([...FalsaAPI]).pipe(
-        map((alumnos) => alumnos.find((alumno) => alumno.id == id) || null),
-        )
-    }
 }

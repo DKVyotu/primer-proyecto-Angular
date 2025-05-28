@@ -1,12 +1,12 @@
-<form>
+<form [formGroup]="loginForm"  >
   <h1 >Iniciar Sesion</h1>
   <mat-form-field>
     <mat-label>Email</mat-label>
-    <input matInput placeholder="Email" type="email" required />
+    <input matInput placeholder="Email" type="email" required formControlName="email" />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Password</mat-label>
-    <input matInput placeholder="Password" type="password" required />
+    <input matInput placeholder="Password" type="password" required formControlName="password"/>
   </mat-form-field>
   <div class="button-container">
     <button mat-raised-button (click)="iniciarSession()" type="button">Iniciar Sesion</button>
